@@ -1,9 +1,13 @@
 
+import { Header } from "./components/Header";
+
+
+
 function App() {
     return (
-        <>
-        <h1>holiii</h1>
-        </>    
+        <section className="bg-primary ">
+           <Header /> 
+        </section>
     );
 }
 

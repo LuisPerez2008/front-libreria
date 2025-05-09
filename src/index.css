@@ -1,3 +1,51 @@
 @import "tailwindcss";
 
 
+
+@theme {
+  --color-primary: #FBF8F3;
+  --color-blue-secondary: #013056;
+  --color-yellow-secondary: #FFBE2D;
+
+
+
+}
+
+.position {
+  @apply flex items-center justify-center;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.principal {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Tres columnas de 1 fracción cada una */
+  grid-template-areas: 
+    "logo sesion sesion"
+    "buscador buscador buscador";
+
+ 
+  @media (min-width: 768px) {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "logo buscador sesion";
+  }
+}
+
+.logo {
+  grid-area: logo;
+ 
+}
+
+.sesion {
+  grid-area: sesion;
+  
+}
+
+.buscador {
+  grid-area: buscador;
+  
+}
+

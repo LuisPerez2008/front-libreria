@@ -1,0 +1,160 @@
+import { useState } from "react";
+
+
+
+export const Header = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+        console.log(isOpen);
+    };
+
+    return (
+        <header className="bg-primary ">
+            <section className=" px-4 py-2 bg-yellow-secondary ">
+                <article className="flex items-center  md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-6 stroke-blue-secondary"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                        />
+                    </svg>
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-6 stroke-blue-secondary"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                        />
+                    </svg>
+                </article>
+            </section>
+
+            <section className="principal  pt-1 px-4 md:mx-auto md:max-w-[80%] lg:max-w-[70%]">
+                <article className="logo">
+                    <img
+                        src="./logo-2.png"
+                        alt="logo de libro espacio"
+                        className=" w-30 "
+                    />
+                </article>
+                <article className="sesion   flex justify-end items-center gap-3">
+                    <div className="grid place-items-center -space-y-1">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-8 stroke-blue-secondary"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                            />
+                        </svg>
+                        <span className="text-sm">Iniciar sesion</span>
+                    </div>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-10 stroke-blue-secondary"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                        />
+                    </svg>
+                </article>
+                <article className="buscador flex items-center justify-between px-2 ">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-10 stroke-blue-secondary md:hidden z-20"
+                        onClick={toggleMenu}
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                    </svg>
+                    <div className="flex-grow flex justify-center  px-3 md:px-16 py-2">
+                        <label className="flex border-1 rounded-lg w-full pl-1 ">
+                            <input
+                                type="text"
+                                placeholder="Busca en toda la tienda"
+                                className=" w-full p-2 focus:outline-none "
+                            />
+                            <div className="bg-yellow-secondary h-auto w-10 rounded-br-lg rounded-tr-lg grid place-items-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="size-6 stroke-blue-secondary  rounded-br-xl rounded-tr-xl"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                    </div>
+                </article>
+            </section>
+
+            <section className={`absolute top-25 left-0 right-0  h-full md:flex md:items-center md:justify-center md:relative md:top-0 -translate-x-full ${isOpen ? "translate-x-0" : ""} transition-transform duration-300  md:translate-x-0`}>
+                
+                <nav className="relative justify-center items-center flex gap-4 mt-16 md:mt-0 md:block">
+                    <ul className="flex flex-col items-center justify-center gap-4 p-4 md:flex md:flex-row ">
+                        <li>
+                            <a href="">Inicio </a>
+                        </li>
+                        <li>
+                            <a href="">Libros </a>
+                        </li>
+                        <li>
+                            <a href="">Nosotros </a>
+                        </li>
+                        <li>
+                            <a href="">Blog </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
+    );
+};
