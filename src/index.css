@@ -6,6 +6,7 @@
   --color-primary: #FBF8F3;
   --color-blue-secondary: #013056;
   --color-yellow-secondary: #FFBE2D;
+  --color-orange-600: var(--color-yellow-secondary);
 
 
 
