@@ -1,13 +1,9 @@
 import { useState } from "react";
 
-
-
 export const Header = () => {
-
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen);
     };
 
     return (
@@ -56,7 +52,7 @@ export const Header = () => {
                     <img
                         src="./logo-2.png"
                         alt="logo de libro espacio"
-                        className=" w-30 "
+                        className=" w-30 cursor-pointer"
                     />
                 </article>
                 <article className="sesion   flex justify-end items-center gap-3">
@@ -67,7 +63,7 @@ export const Header = () => {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-8 stroke-blue-secondary"
+                            className="size-8 stroke-blue-secondary cursor-pointer hover:fill-blue-secondary hover:stroke-yellow-secondary"
                         >
                             <path
                                 strokeLinecap="round"
@@ -83,7 +79,7 @@ export const Header = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-10 stroke-blue-secondary"
+                        className="size-10 stroke-blue-secondary cursor-pointer hover:fill-blue-secondary hover:stroke-yellow-secondary"
                     >
                         <path
                             strokeLinecap="round"
@@ -99,7 +95,7 @@ export const Header = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-10 stroke-blue-secondary md:hidden z-20"
+                        className="size-10 stroke-blue-secondary md:hidden z-20 cursor-pointer"
                         onClick={toggleMenu}
                     >
                         <path
@@ -109,20 +105,20 @@ export const Header = () => {
                         />
                     </svg>
                     <div className="flex-grow flex justify-center  px-3 md:px-16 py-2">
-                        <label className="flex border-1 rounded-lg w-full pl-1 ">
+                        <label className="flex border-1 rounded-lg w-[95%] lg:w-[90%] pl-1 ">
                             <input
                                 type="text"
                                 placeholder="Busca en toda la tienda"
                                 className=" w-full p-2 focus:outline-none "
                             />
-                            <div className="bg-yellow-secondary h-auto w-10 rounded-br-lg rounded-tr-lg grid place-items-center">
+                            <div className="bg-yellow-secondary h-auto w-10 rounded-br-lg rounded-tr-lg grid place-items-center cursor-pointer">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     strokeWidth={1.5}
                                     stroke="currentColor"
-                                    className="size-6 stroke-blue-secondary  rounded-br-xl rounded-tr-xl"
+                                    className="size-6 stroke-blue-secondary  rounded-br-xl rounded-tr-xl "
                                 >
                                     <path
                                         strokeLinecap="round"
@@ -136,21 +132,54 @@ export const Header = () => {
                 </article>
             </section>
 
-            <section className={`absolute top-25 left-0 right-0  h-full md:flex md:items-center md:justify-center md:relative md:top-0 -translate-x-full ${isOpen ? "translate-x-0" : ""} transition-transform duration-300  md:translate-x-0`}>
-                
-                <nav className="relative justify-center items-center flex gap-4 mt-16 md:mt-0 md:block">
-                    <ul className="flex flex-col items-center justify-center gap-4 p-4 md:flex md:flex-row ">
-                        <li>
-                            <a href="">Inicio </a>
+            <section
+                className={`absolute top-25 left-0 right-0 bg-white md:bg-primary h-full md:h-auto md:flex md:items-center md:justify-center md:relative md:top-0 -translate-x-full ${
+                    isOpen ? "translate-x-0" : ""
+                } transition-transform duration-300  md:translate-x-0`}
+            >
+                <nav
+                    className={`relative justify-center items-center flex gap-4 mt-16 md:mt-0 md:block `}
+                >
+                    <ul className="flex flex-col items-center justify-center space-y-6 md:space-x-0 md:gap-6 p-4 md:p-0 md:flex md:flex-row  w-full  ">
+                        <li className=" md:after:content-['|']  md:after:ml-10  w-full text-center border-b-2  border-blue-secondary md:border-none pb-3 md:pb-0">
+                            <a
+                                href=""
+                                className="text-2xl  md:text-xl font-semibold  px-4 py-2 text-blue-secondary hover:bg-blue-secondary hover:text-white rounded-md "
+                            >
+                                Inicio
+                            </a>
                         </li>
-                        <li>
-                            <a href="">Libros </a>
+                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2  border-blue-secondary md:border-none pb-3 md:pb-0">
+                            <a
+                                href=""
+                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary rounded-md "
+                            >
+                                Categorias
+                            </a>
                         </li>
-                        <li>
-                            <a href="">Nosotros </a>
+                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                            <a
+                                href=""
+                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
+                            >
+                                Nosotros
+                            </a>
                         </li>
-                        <li>
-                            <a href="">Blog </a>
+                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                            <a
+                                href=""
+                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
+                            >
+                                Blog
+                            </a>
+                        </li>
+                        <li className=" lg:after:ml-16 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                            <a
+                                href=""
+                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:flex md:items-center md:justify-center rounded-md "
+                            >
+                                Contactanos
+                            </a>
                         </li>
                     </ul>
                 </nav>
