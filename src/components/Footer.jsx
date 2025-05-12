@@ -1,23 +1,23 @@
 export const Footer = () => {
     return (
-        <footer class="py-10 bg-blue-secondary sm:pt-16 lg:pt-24">
-            <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-y-10 gap-x-8 xl:gap-x-12">
-                    <div class="col-span-2 md:col-span-3 xl:pr-8 flex items-center justify-center">
+        <footer className="py-10 bg-blue-secondary sm:pt-16 lg:pt-24">
+            <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-y-10 gap-x-8 xl:gap-x-12">
+                    <div className="col-span-2 md:col-span-3 xl:pr-8 flex items-center justify-center">
                         <img
-                            class="w-36 h-auto"
+                            className="w-36 h-auto"
                             src="/logo.png"
                             alt="logo de libro espacio"
                         />
                     </div>
 
-                    <div class="lg:col-span-3">
-                        <ul class=" space-y-5">
+                    <div className="lg:col-span-3">
+                        <ul className="space-y-5">
                             <li>
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Inicio
                                 </a>
@@ -27,7 +27,7 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Categorias
                                 </a>
@@ -37,7 +37,7 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Nosotros
                                 </a>
@@ -47,7 +47,7 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Blog
                                 </a>
@@ -55,15 +55,15 @@ export const Footer = () => {
                         </ul>
                     </div>
 
-                    <div class="lg:col-span-3">
-                        <p class="text-base font-semibold text-white">Compras</p>
+                    <div className="lg:col-span-3">
+                        <p className="text-base font-semibold text-white">Compras</p>
 
-                        <ul class="mt-6 space-y-4">
+                        <ul className="mt-6 space-y-4">
                             <li>
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     ¿Cómo comprar?
                                 </a>
@@ -73,7 +73,7 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Metodos de Pago
                                 </a>
@@ -83,27 +83,25 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Seguimiento de Pedido
                                 </a>
                             </li>
-
-                           
                         </ul>
                     </div>
 
-                    <div class="lg:col-span-2">
-                        <p class="text-base font-semibold text-white">
+                    <div className="lg:col-span-2">
+                        <p className="text-base font-semibold text-white">
                             Contactanos
                         </p>
 
-                        <ul class="mt-6 space-y-5">
+                        <ul className="mt-6 space-y-5">
                             <li>
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     (011) 1234-5678
                                 </a>
@@ -113,7 +111,7 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     contacto@libroespacio.com
                                 </a>
@@ -123,35 +121,31 @@ export const Footer = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    class="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                    className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Ubicar Tiendas
                                 </a>
                             </li>
-
-                           
                         </ul>
                     </div>
-
-                    
                 </div>
 
-                <hr class="mt-16 mb-10 border-gray-200" />
+                <hr className="mt-16 mb-10 border-gray-200" />
 
-                <div class="sm:flex sm:items-center sm:justify-between">
-                    <p class="text-sm text-white">
+                <div className="sm:flex sm:items-center sm:justify-between">
+                    <p className="text-sm text-white">
                         © Copyright 2025, Derechos Reservados Libro Espacio.
                     </p>
 
-                    <ul class="flex items-center mt-5 space-x-3 md:order-3 sm:mt-0">
+                    <ul className="flex items-center mt-5 space-x-3 md:order-3 sm:mt-0">
                         <li>
                             <a
                                 href="#"
                                 title=""
-                                class="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
                             >
                                 <svg
-                                    class="w-4 h-4"
+                                    className="w-4 h-4"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
                                     fill="currentColor"
@@ -165,10 +159,10 @@ export const Footer = () => {
                             <a
                                 href="#"
                                 title=""
-                                class="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
                             >
                                 <svg
-                                    class="w-4 h-4"
+                                    className="w-4 h-4"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
                                     fill="currentColor"
@@ -182,10 +176,10 @@ export const Footer = () => {
                             <a
                                 href="#"
                                 title=""
-                                class="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                className="flex items-center justify-center text-white transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
                             >
                                 <svg
-                                    class="w-4 h-4"
+                                    className="w-4 h-4"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
                                     fill="currentColor"

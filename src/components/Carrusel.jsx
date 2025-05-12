@@ -38,7 +38,7 @@ export const Carrusel = () => {
     };
 
     return (
-        <div className=" w-full h-auto mx-auto ">
+        <div className=" w-full h-auto mx-auto  ">
             <div className=" relative h-full">
                 <div
                     className=" absolute top-1/2 left-8 transform -translate-y-1/2 text-white text-4xl font-bold z-10 cursor-pointer"
