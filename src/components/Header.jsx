@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -6,10 +6,22 @@ export const Header = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen]);
+
     return (
-        <header className="bg-primary ">
+        <header className="bg-primary">
             <section className=" px-4 py-2 bg-yellow-secondary ">
-                <article className="flex items-center  md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
+                <article className="flex items-center md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -47,7 +59,7 @@ export const Header = () => {
                 </article>
             </section>
 
-            <section className="principal  pt-1 px-4 md:mx-auto md:max-w-[80%] lg:max-w-[70%]">
+            <section className="principal pt-1 px-4 md:mx-auto md:max-w-[80%] lg:max-w-[70%]">
                 <article className="logo">
                     <img
                         src="./logo-2.png"
@@ -55,7 +67,7 @@ export const Header = () => {
                         className=" w-30 cursor-pointer"
                     />
                 </article>
-                <article className="sesion   flex justify-end items-center gap-3">
+                <article className="sesion flex justify-end items-center gap-3">
                     <div className="grid place-items-center -space-y-1">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +107,7 @@ export const Header = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-10 stroke-blue-secondary md:hidden z-20 cursor-pointer"
+                        className="size-10 stroke-blue-secondary md:hidden z-30 cursor-pointer"
                         onClick={toggleMenu}
                     >
                         <path
@@ -104,7 +116,7 @@ export const Header = () => {
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                         />
                     </svg>
-                    <div className="flex-grow flex justify-center  px-3 md:px-16 py-2">
+                    <div className="flex-grow flex justify-center px-3 md:px-16 py-2">
                         <label className="flex border-1 rounded-lg w-[95%] lg:w-[90%] pl-1 ">
                             <input
                                 type="text"
@@ -135,45 +147,45 @@ export const Header = () => {
             <section
                 className={`absolute top-25 left-0 right-0 bg-white md:bg-primary h-full md:h-auto md:flex md:items-center md:justify-center md:relative md:top-0 -translate-x-full ${
                     isOpen ? "translate-x-0" : ""
-                } transition-transform duration-300  md:translate-x-0`}
+                } transition-transform duration-300 md:translate-x-0 z-20`}
             >
                 <nav
                     className={`relative justify-center items-center flex gap-4 mt-16 md:mt-0 md:block `}
                 >
-                    <ul className="flex flex-col items-center justify-center space-y-6 md:space-x-0 md:gap-6 p-4 md:p-0 md:flex md:flex-row  w-full  ">
-                        <li className=" md:after:content-['|']  md:after:ml-10  w-full text-center border-b-2  border-blue-secondary md:border-none pb-3 md:pb-0">
+                    <ul className="flex flex-col items-center justify-center space-y-6 md:space-x-0 md:gap-6 p-4 md:p-0 md:flex md:flex-row w-full">
+                        <li className="md:after:content-['|'] md:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
                             <a
                                 href=""
-                                className="text-2xl  md:text-xl font-semibold  px-4 py-2 text-blue-secondary hover:bg-blue-secondary hover:text-white rounded-md "
+                                className="text-2xl md:text-xl font-semibold px-4 py-2 text-blue-secondary hover:bg-blue-secondary hover:text-white rounded-md "
                             >
                                 Inicio
                             </a>
                         </li>
-                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2  border-blue-secondary md:border-none pb-3 md:pb-0">
+                        <li className="md:after:content-['|'] md:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
                             <a
                                 href=""
-                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary rounded-md "
+                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary rounded-md "
                             >
                                 Categorias
                             </a>
                         </li>
-                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                        <li className="md:after:content-['|'] md:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
                             <a
                                 href=""
-                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
+                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
                             >
                                 Nosotros
                             </a>
                         </li>
-                        <li className="md:after:content-['|'] md:after:ml-10  w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                        <li className="md:after:content-['|'] md:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
                             <a
                                 href=""
-                                className=" px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
+                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md "
                             >
                                 Blog
                             </a>
                         </li>
-                        <li className=" lg:after:ml-16 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
+                        <li className="lg:after:ml-16 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
                             <a
                                 href=""
                                 className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:flex md:items-center md:justify-center rounded-md "

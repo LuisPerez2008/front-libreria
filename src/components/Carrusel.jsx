@@ -26,9 +26,9 @@ export const Carrusel = () => {
         } else {
             const isLastSlide = currentIndex === data.length - 1;
             if (isLastSlide) {
-                setCurrentIndex(0); 
+                setCurrentIndex(0);
             } else {
-                setCurrentIndex((curr) => curr + 1); 
+                setCurrentIndex((curr) => curr + 1);
             }
         }
     };
@@ -58,13 +58,18 @@ export const Carrusel = () => {
                         className="list-none whitespace-nowrap  inline"
                     >
                         {data.map((item) => (
-                            <li key={item.id} className="inline-block">
-                                <img src={item.imgUrl} className="" />
+                            <li key={item.id} className="inline-block w-full">
+                                <img
+                                    srcSet={`${item.imgUrl2} 760w, ${item.imgUrl} 1200w`}                      
+                                    src={item.imgUrl2}
+                                    alt={`carousel-img-${item.id}`}
+                                    className="w-full h-auto object-cover"
+                                />
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className="relative flex justify-center -top-10 z-20">
+                <div className="relative flex justify-center -top-10 z-10">
                     {data.map((_, idx) => (
                         <div
                             key={idx}
