@@ -8,7 +8,7 @@
   --color-yellow-secondary: #FFBE2D;
   --color-orange-600: var(--color-yellow-secondary);
 
-  
+  --breakpoint-xs: 530px;
 
 }
 
@@ -49,6 +49,26 @@ body {
   grid-area: buscador;
   
 }
+
+
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: var(--color-primary);
+ 
+}
+
+
+
+.mySwiper2 {
+  height: auto;
+  width: 100%;
+
+  
+}
+
+
 
 
 
