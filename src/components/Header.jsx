@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    const closeMenu = () => setIsOpen(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -154,45 +157,50 @@ export const Header = () => {
                 >
                     <ul className="flex flex-col items-center justify-center space-y-6 md:space-y-0  md:gap-6 p-4 md:p-0 md:flex md:flex-row w-full md:justify-center md:items-center ">
                         <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0 ">
-                            <a
-                                href=""
+                            <Link
+                                to="/"
+                                onClick={closeMenu}
                                 className="text-2xl md:text-xl font-semibold px-4 py-2 text-blue-secondary hover:bg-blue-secondary hover:text-white rounded-md transition-all duration-300  "
                             >
                                 Inicio
-                            </a>
+                            </Link>
                         </li>
                         <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <a
-                                href=""
+                            <Link
+                                to="/categorias"
+                                onClick={closeMenu}
                                 className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary rounded-md transition-all duration-300"
                             >
                                 Categorias
-                            </a>
+                            </Link>
                         </li>
                         <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <a
-                                href=""
+                            <Link
+                                to="/nosotros"
+                                onClick={closeMenu}
                                 className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
                             >
                                 Nosotros
-                            </a>
+                            </Link>
                         </li>
                         <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <a
-                                href=""
+                            <Link
+                                to="/blog"
+                                onClick={closeMenu}
                                 className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
                             >
                                 Blog
-                            </a>
+                            </Link>
                         </li>
-                        
+
                         <li className=" w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <a
-                                href=""
+                            <Link
+                                to="/contactanos"
+                                onClick={closeMenu}
                                 className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
                             >
                                 Contactanos
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>

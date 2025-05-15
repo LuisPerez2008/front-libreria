@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export const Footer = () => {
     return (
         <footer className="py-10 bg-blue-secondary sm:pt-16 lg:pt-24">
@@ -14,43 +16,41 @@ export const Footer = () => {
                     <div className="lg:col-span-3">
                         <ul className="space-y-5">
                             <li>
-                                <a
-                                    href="#"
-                                    title=""
+                                <Link
+                                    to="/"
+                                    
                                     className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Inicio
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
-                                    href="#"
-                                    title=""
+                                <Link
+                                    to="/categorias"
                                     className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Categorias
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
-                                    href="#"
-                                    title=""
+                                <Link
+                                    to="/nosotros"
                                     className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Nosotros
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
-                                    href="#"
-                                    title=""
+                                <Link
+                                    to="/contactanos"
+                                    
                                     className="flex text-sm text-white transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                                 >
                                     Blog
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
