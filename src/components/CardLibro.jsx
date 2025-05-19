@@ -1,6 +1,6 @@
 export const CardLibro = ({ libro }) => {
     return (
-        <div className=" space-y-2 rounded-lg h-full min-h-[350px] bg-primary group">
+        <div className=" space-y-2 rounded-lg h-full min-h-[350px] bg-primary group text-center">
             <div className="relative h-auto">
                 <img
                     src={libro.imagen}

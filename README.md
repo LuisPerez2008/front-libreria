@@ -1,5 +1,6 @@
 # Libro Espacio
 
+**Proyecto para el Curos SOA**
 **Libro Espacio** es una librería en línea diseñada para la venta de libros. Permite a los usuarios navegar por una amplia variedad de libros, agregar productos al carrito, gestionar su cuenta mediante un sistema de inicio de sesión y realizar compras en línea.
 
 ## Características
