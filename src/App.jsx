@@ -6,6 +6,9 @@ import { Blog } from "./pages/Blog";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Nosotros } from "./pages/Nosotros";
 import { Categorias } from "./pages/Categorias";
+import { InicioSesion } from "./pages/InicioSesion";
+import { Registro } from "./pages/Registro";
+import { DetalleLibro } from "./pages/DetalleLibro";
 
 function App() {
     return (
@@ -18,6 +21,9 @@ function App() {
                     <Route path="/nosotros" element={<Nosotros />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contactanos" element={<Contactanos />} />
+                    <Route path="/inicio-sesion" element={<InicioSesion/>} />
+                    <Route path="/registro" element={<Registro />} />
+                    <Route path="/libro/:titulo-id" element={<DetalleLibro />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

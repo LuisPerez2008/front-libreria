@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
+const menuItems = [
+    { name: "Inicio", to: "/" },
+    { name: "Libros", to: "/categorias" },
+    { name: "Nosotros", to: "/nosotros" },
+    { name: "Blog", to: "/blog" },
+    { name: "Contactanos", to: "/contactanos" },
+];
+
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
@@ -22,7 +30,7 @@ export const Header = () => {
     }, [isOpen]);
 
     return (
-        <header className="bg-primary">
+        <header className="bg-primary  ">
             <section className=" px-4 py-2 bg-yellow-secondary ">
                 <article className="flex items-center md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
                     <svg
@@ -65,28 +73,33 @@ export const Header = () => {
             <section className="principal pt-1 px-4 md:mx-auto md:max-w-[80%] lg:max-w-[70%]">
                 <article className="logo">
                     <img
-                        src="./logo-2.png"
+                        src="./Logo-2.png"
                         alt="logo de libro espacio"
                         className=" w-30 cursor-pointer"
                     />
                 </article>
                 <article className="sesion flex justify-end items-center gap-3">
-                    <div className="grid place-items-center -space-y-1">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="size-8 stroke-blue-secondary cursor-pointer hover:fill-blue-secondary hover:stroke-yellow-secondary transition-all duration-300"
+                    <div className="">
+                        <Link
+                            className="grid place-items-center -space-y-1"
+                            to="/inicio-sesion"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                            />
-                        </svg>
-                        <span className="text-sm">Iniciar sesion</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-8 stroke-blue-secondary cursor-pointer hover:fill-blue-secondary hover:stroke-yellow-secondary transition-all duration-300"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                />
+                            </svg>
+                            <span className="text-sm">Iniciar sesion</span>
+                        </Link>
                     </div>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -156,52 +169,22 @@ export const Header = () => {
                     className={`relative  items-center flex mt-16 md:mt-2 lg:mt-0 md:block md:max-w-[80%] lg:max-w-[100%]  md:py-4 `}
                 >
                     <ul className="flex flex-col items-center justify-center space-y-6 md:space-y-0  md:gap-6 p-4 md:p-0 md:flex md:flex-row w-full md:justify-center md:items-center ">
-                        <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0 ">
-                            <Link
-                                to="/"
-                                onClick={closeMenu}
-                                className="text-2xl md:text-xl font-semibold px-4 py-2 text-blue-secondary hover:bg-blue-secondary hover:text-white rounded-md transition-all duration-300  "
+                        {menuItems.map(({ name, to }, index) => (
+                            <li
+                                key={name}
+                                className={` md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0   ${
+                                    index === menuItems.length - 1 ? "" : ""
+                                }  `}
                             >
-                                Inicio
-                            </Link>
-                        </li>
-                        <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <Link
-                                to="/categorias"
-                                onClick={closeMenu}
-                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary rounded-md transition-all duration-300"
-                            >
-                                Categorias
-                            </Link>
-                        </li>
-                        <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <Link
-                                to="/nosotros"
-                                onClick={closeMenu}
-                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
-                            >
-                                Nosotros
-                            </Link>
-                        </li>
-                        <li className="md:after:content-['|'] lg:after:ml-10 w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <Link
-                                to="/blog"
-                                onClick={closeMenu}
-                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
-                            >
-                                Blog
-                            </Link>
-                        </li>
-
-                        <li className=" w-full text-center border-b-2 border-blue-secondary md:border-none pb-3 md:pb-0">
-                            <Link
-                                to="/contactanos"
-                                onClick={closeMenu}
-                                className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-xl font-semibold text-blue-secondary md:items-center md:justify-center rounded-md  transition-all duration-300"
-                            >
-                                Contactanos
-                            </Link>
-                        </li>
+                                <Link
+                                    to={to}
+                                    onClick={closeMenu}
+                                    className="px-4 py-2 hover:bg-blue-secondary hover:text-white text-2xl md:text-lg font-semibold text-blue-secondary rounded-md transition-all duration-300"
+                                >
+                                    {name}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </section>

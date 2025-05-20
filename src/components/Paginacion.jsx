@@ -84,10 +84,12 @@ const libros = [
 
 export const Paginacion = () => {
     return (
-        <div className=" w-full grid grid-cols-[repeat(auto-fit,_minmax(130px,_1fr))] gap-2">
-            {libros.map((libro) => (
-                <CardLibro key={libro.id} libro={libro} />
-            ))}
-        </div>
+        <>
+            <div className=" w-full grid grid-cols-[repeat(auto-fit,_minmax(130px,_1fr))] gap-2">
+                {libros.map((libro) => (
+                    <CardLibro key={libro.id} libro={libro} />
+                ))}
+            </div>
+        </>
     );
 };

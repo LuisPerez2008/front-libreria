@@ -368,3 +368,14 @@ body {
     flex: 1 1 100%;
   }
 }
+
+.shadow-top {
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Quitar sombra desde md (768px en Tailwind) */
+@media (min-width: 768px) {
+  .shadow-top {
+    box-shadow: none;
+  }
+}
