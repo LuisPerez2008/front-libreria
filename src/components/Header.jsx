@@ -72,11 +72,10 @@ export const Header = () => {
 
             <section className="principal pt-1 px-4 md:mx-auto md:max-w-[80%] lg:max-w-[70%]">
                 <article className="logo">
-                    <img
-                        src="./Logo-2.png"
-                        alt="logo de libro espacio"
-                        className=" w-30 cursor-pointer"
-                    />
+                    <Link to="/inicio">
+                    <img src="logo-2.png" alt=""  className="w-30 cursor-pointer"/>
+                    </Link>
+                    
                 </article>
                 <article className="sesion flex justify-end items-center gap-3">
                     <div className="">

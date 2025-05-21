@@ -17,13 +17,14 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Inicio />} />
+                    <Route path="/inicio" element={<Inicio />} />
                     <Route path="/categorias" element={<Categorias />} />
                     <Route path="/nosotros" element={<Nosotros />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contactanos" element={<Contactanos />} />
                     <Route path="/inicio-sesion" element={<InicioSesion/>} />
                     <Route path="/registro" element={<Registro />} />
-                    <Route path="/libro/:titulo-id" element={<DetalleLibro />} />
+                    <Route path="/libro/:id" element={<DetalleLibro />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
