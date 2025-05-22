@@ -9,6 +9,7 @@ import { Categorias } from "./pages/Categorias";
 import { InicioSesion } from "./pages/InicioSesion";
 import { Registro } from "./pages/Registro";
 import { DetalleLibro } from "./pages/DetalleLibro";
+import { Carrito } from "./pages/Carrito";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/inicio-sesion" element={<InicioSesion/>} />
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/libro/:id" element={<DetalleLibro />} />
+                    <Route path="/carrito" element={<Carrito />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

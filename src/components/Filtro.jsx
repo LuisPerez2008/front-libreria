@@ -153,7 +153,7 @@ export const Filtro = () => {
                 </div>
                 <div className="flex flex-row justify-between w-full p-4  gap-2">
                     <button
-                        className={`bg-blue-secondary hidden md:block cursor-pointer  text-white py-2 px-4 hover:bg-blue-secondary/85 ${
+                        className={`bg-blue-secondary hidden md:block cursor-pointer  text-white py-2 px-4 hover:bg-blue-secondary/85  ${
                             openCategorias || openPrecio
                                 ? " "
                                 : "bg-gray-400 hover:bg-gray-400 cursor-help"
