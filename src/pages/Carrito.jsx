@@ -7,7 +7,7 @@ export const Carrito = () => {
         {
             id: 1,
             title: "Los juegos del hambre: Amanecer en la cosecha",
-            price: 100,         
+            price: 100,
             quantity: 1,
             image: "https://dcassetcdn.com/design_img/3891363/745365/25367600/nqc9cm972mxd0zv8ehg8mwkdb0_thumbnail.png",
             author: "Suzanne Collins",
@@ -55,12 +55,12 @@ export const Carrito = () => {
 
     // Cálculos de precios
     const subtotal = cartItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
+        (sum, item) => sum + item.price * item.quantity,0
     );
-    const envio = 10
-
+    
+    const envio = 10;
     const total = subtotal + envio;
+    
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -74,8 +74,8 @@ export const Carrito = () => {
                                 {cartItems.reduce(
                                     (sum, item) => sum + item.quantity,
                                     -1
-                                )}
-                                {" "}productos)
+                                )}{" "}
+                                productos)
                             </h1>
                         </div>
 
@@ -269,24 +269,28 @@ export const Carrito = () => {
                             <div className="flex justify-between">
                                 <span>Envío:</span>
                                 <span>
-                                    {subtotal < 300 ? `S/. ${envio}` : "Gratis"}
+                                    {cartItems.length === 0
+                                        ? "Gratis"
+                                        : subtotal > 300
+                                        ? "Gratis"
+                                        : `S/. ${envio}`}
                                 </span>
                             </div>
 
                             <div className="pt-4 border-t">
                                 <div className="flex justify-between font-bold text-lg">
                                     <span>Total:</span>
-                                    <span>
-                                        S/. {total.toFixed(2)}
-                                    </span>
+                                    <span>S/. {total.toFixed(2)}</span>
                                 </div>
                                 <p className="text-xs text-gray-500 mt-1">
                                     Impuestos incluidos
                                 </p>
                             </div>
 
-                          
-                            <button disabled={total === 0} className="w-full py-6 mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium  transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring  disabled:pointer-events-none disabled:opacity-50 bg-yellow-secondary cursor-pointer text-primary-foreground hover:bg-yellow-secondary/80 h-11 px-8">
+                            <button
+                                disabled={total === 0}
+                                className="w-full py-6 mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium  transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring  disabled:pointer-events-none disabled:opacity-50 bg-yellow-secondary cursor-pointer text-primary-foreground hover:bg-yellow-secondary/80 h-11 px-8"
+                            >
                                 Proceder al pago
                             </button>
 
@@ -346,5 +350,3 @@ export const Carrito = () => {
         </div>
     );
 };
-
-

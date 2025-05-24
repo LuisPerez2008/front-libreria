@@ -10,6 +10,7 @@ import { InicioSesion } from "./pages/InicioSesion";
 import { Registro } from "./pages/Registro";
 import { DetalleLibro } from "./pages/DetalleLibro";
 import { Carrito } from "./pages/Carrito";
+import { PerfilUsuario } from "./pages/PerfilUsuario";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/libro/:id" element={<DetalleLibro />} />
                     <Route path="/carrito" element={<Carrito />} />
+                    <Route path="/perfil-usuario" element={<PerfilUsuario />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

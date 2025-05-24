@@ -30,7 +30,7 @@ export const Header = () => {
     }, [isOpen]);
 
     return (
-        <header className="bg-primary  ">
+        <header className="bg-primary border-b-1 shadow-lg shasow-b-black-200" > 
             <section className=" px-4 py-2 bg-yellow-secondary ">
                 <article className="flex items-center md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
                     <svg
