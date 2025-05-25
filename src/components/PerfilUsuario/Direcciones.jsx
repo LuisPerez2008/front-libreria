@@ -77,7 +77,7 @@ export const Direcciones = ({ userData }) => {
                             </div>
                             {!address.isDefault && (
                                 <button
-                                    className="mt-3 text-xs h-7 hover:bg-blue-50 px-2 rounded-md cursor-pointer"
+                                    className="mt-3 text-xs h-7 hover:bg-blue-50 px-2 rounded-md cursor-pointer bg-blue-secondary/20"
                                 >
                                     Establecer como predeterminada
                                 </button>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { MenuPerfil } from "./MenuPerfil";
 
 const menuItems = [
     { name: "Inicio", to: "/" },
@@ -30,7 +31,7 @@ export const Header = () => {
     }, [isOpen]);
 
     return (
-        <header className="bg-primary border-b-1 shadow-lg shasow-b-black-200" > 
+        <header className="bg-primary border-b-1 shadow-lg shasow-b-black-200">
             <section className=" px-4 py-2 bg-yellow-secondary ">
                 <article className="flex items-center md:mx-auto justify-end md:max-w-[80%] lg:max-w-[70%]">
                     <svg
@@ -81,7 +82,7 @@ export const Header = () => {
                     </Link>
                 </article>
                 <article className="sesion flex justify-end items-center gap-3">
-                    <div className="">
+                    <div className="relative group">
                         <Link
                             className="grid place-items-center -space-y-1"
                             to="/inicio-sesion"
@@ -102,6 +103,7 @@ export const Header = () => {
                             </svg>
                             <span className="text-sm">Iniciar sesion</span>
                         </Link>
+                       <MenuPerfil />
                     </div>
                     <Link to={"/carrito"}>
                         <svg
