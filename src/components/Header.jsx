@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { MenuPerfil } from "./MenuPerfil";
-
+import { CartContext } from "../contextos/CartContext";
+import { useContext } from "react";
 const menuItems = [
     { name: "Inicio", to: "/" },
     { name: "Libros", to: "/categorias" },
@@ -11,10 +12,22 @@ const menuItems = [
 ];
 
 export const Header = () => {
+
+    const { totalItems} = useContext(CartContext)
+
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    const [usuario, setUsuario] = useState(null);
+
+    useEffect(() => {
+        const storedUsuario = localStorage.getItem("usuario");
+        if (storedUsuario) {
+            setUsuario(JSON.parse(storedUsuario));
+        }
+        
+    }, []);
 
     const closeMenu = () => setIsOpen(false);
 
@@ -85,7 +98,12 @@ export const Header = () => {
                     <div className="relative group">
                         <Link
                             className="grid place-items-center -space-y-1"
-                            to="/inicio-sesion"
+                            to={usuario ? "#" : "/inicio-sesion"}
+                            onClick={(e) => {
+                                if (usuario) {
+                                    e.preventDefault();
+                                }
+                            }}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -101,11 +119,17 @@ export const Header = () => {
                                     d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                                 />
                             </svg>
-                            <span className="text-sm">Iniciar sesion</span>
+                            <span className="text-sm">
+                                {usuario
+                                    ? `Hola, ${usuario.nombre.split(" ")[0]} ${
+                                          usuario.apellido.split(" ")[0]
+                                      }`
+                                    : "Iniciar Sesion"}
+                            </span>
                         </Link>
-                       <MenuPerfil />
+                        <MenuPerfil usuario={usuario} />
                     </div>
-                    <Link to={"/carrito"}>
+                    <Link to={"/carrito"} className="relative  w-13">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -120,6 +144,8 @@ export const Header = () => {
                                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                             />
                         </svg>
+                        {totalItems  !== 0 ?  <span className="absolute top-1/2 right-0 rounded-full w-4 h-4 p-0.5 bg-yellow-secondary text-sm font-semibold flex justify-center items-center">{totalItems}</span> : "" }
+                       
                     </Link>
                 </article>
                 <article className="buscador flex items-center justify-between px-2 ">

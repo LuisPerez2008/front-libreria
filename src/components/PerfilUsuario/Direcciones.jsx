@@ -72,7 +72,7 @@ export const Direcciones = ({ userData }) => {
                                     {address.city}, {address.state}{" "}
                                     {address.zipCode}
                                 </p>
-                                <p>Chile</p>
+                                <p>Peru</p>
                                 <p className="mt-2">{userData.phone}</p>
                             </div>
                             {!address.isDefault && (

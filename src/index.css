@@ -149,6 +149,17 @@ option{
     font-size: 1.1rem;
     color: #333;
 }
+@media (max-width: 768px) {
+  .banner-text, .mision, .vision {
+    max-width: 100%;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .banner {
+    text-align: center;
+  }
+}
 
 
 
@@ -392,3 +403,5 @@ option{
     box-shadow: none;
   }
 }
+
+

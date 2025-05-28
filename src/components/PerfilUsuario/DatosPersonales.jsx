@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const DatosPersonales = ({ userData }) => {
+export const DatosPersonales = ({ usuario}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -38,7 +38,7 @@ export const DatosPersonales = ({ userData }) => {
                             <div className="h-24 w-24">
                                 <img
                                     src={"/logo.png"}
-                                    alt={`${userData.name} ${userData.lastName}`}
+                                    alt={`${usuario.nombre} ${usuario.apellido}`}
                                 />
                             </div>
                             <button className="mt-2 px-2 py-1 rounded-md text-sm hover:bg-yellow-secondary/10 cursor-pointer">
@@ -49,34 +49,34 @@ export const DatosPersonales = ({ userData }) => {
                         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <p className="text-sm text-gray-500">Nombre</p>
-                                <p className="font-medium">{userData.name}</p>
+                                <p className="font-medium">{usuario.nombre}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500">
                                     Apellido
                                 </p>
                                 <p className="font-medium">
-                                    {userData.lastName}
+                                    {usuario.apellido}
                                 </p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500">
                                     Correo electrónico
                                 </p>
-                                <p className="font-medium">{userData.email}</p>
+                                <p className="font-medium">{usuario.correo}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500">
                                     Teléfono
                                 </p>
-                                <p className="font-medium">{userData.phone}</p>
+                                <p className="font-medium">{usuario.telefono}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500">
                                     Tipo de documento
                                 </p>
                                 <p className="font-medium">
-                                    {userData.documentType}
+                                    {usuario.documento?.tipo}
                                 </p>
                             </div>
                             <div>
@@ -84,19 +84,10 @@ export const DatosPersonales = ({ userData }) => {
                                     Número de documento
                                 </p>
                                 <p className="font-medium">
-                                    {userData.documentNumber}
+                                    {usuario.numerodocumento}
                                 </p>
                             </div>
-                            <div>
-                                <p className="text-sm text-gray-500">
-                                    Fecha de nacimiento
-                                </p>
-                                <p className="font-medium">
-                                    {new Date(
-                                        userData.birthDate
-                                    ).toLocaleDateString("es-CL")}
-                                </p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

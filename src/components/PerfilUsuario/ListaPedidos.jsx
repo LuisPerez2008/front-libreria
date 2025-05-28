@@ -1,15 +1,16 @@
 export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
+    console.log(order)
     return (
         <div key={order.id} className="border rounded-md overflow-hidden">
             <div className="p-4 bg-yellow-secondary/10 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                 <div>
                     <div className="flex items-center gap-2">
-                        <span className="font-medium">Pedido #{order.id}</span>
-                        <OrderStatusBadge status={order.status} />
+                        <span className="font-medium">Pedido #ORD-2025-{order.id}</span>
+                        <OrderStatusBadge status={order.estado} />
                     </div>
                     <p className="text-sm text-gray-500">
                         Fecha:{" "}
-                        {new Date(order.date).toLocaleDateString("es-CL")}
+                        {new Date(order.fecha).toLocaleDateString("es-CL")}
                     </p>
                 </div>
                 <div className="flex items-center gap-2 ">
@@ -38,7 +39,7 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
                         </svg>
                         Ver detalles
                     </button>
-                    {order.status === "completed" && (
+                    {order.estado === "Completado" && (
                         <button className="text-xs py-2 px-4 flex gap-2 border-1 rounded-md bg-white cursor-pointer hover:bg-gray-100">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -62,14 +63,14 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
 
             <div className="p-4 flex flex-col sm:flex-row gap-4">
                 <div className="flex gap-2 flex-wrap">
-                    {order.items.map((item) => (
+                    {order.detalles.map((item) => (
                         <div
                             key={item.id}
                             className="w-12 h-16 bg-gray-100 rounded-md overflow-hidden"
                         >
                             <img
-                                src={item.image}
-                                alt={item.title}
+                                src={item.libro?.img ? `data:image/jpeg;base64,${item.libro.img}` : "/placeholder.jpg"}
+                                alt={item.libro.titulo}
                                 width={48}
                                 height={64}
                                 className="w-full h-full object-cover"
@@ -80,18 +81,18 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
                 <div className="flex-1 flex flex-col sm:flex-row justify-between sm:items-center">
                     <div>
                         <p className="text-sm">
-                            {order.items.length}{" "}
-                            {order.items.length === 1
+                            {order.detalles?.length}{" "}
+                            {order.detalles?.length === 1
                                 ? "producto"
                                 : "productos"}
                         </p>
                         <p className="text-xs text-gray-500">
-                            {order.items.map((item) => item.title).join(", ")}
+                            {order.detalles?.map((item) => item.libro.titulo).join(", ")}
                         </p>
                     </div>
                     <div className="text-right mt-2 sm:mt-0">
                         <p className="text-sm text-gray-500">Total</p>
-                        <p className="font-bold">$ {order.total}</p>
+                        <p className="font-bold">$ {order.precioFinal}</p>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,8 @@
 import { ListaProductos } from "./ListaProductos";
 
 
-export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToOrderList, selectedOrder}) => {
+export const VerDetalle = ({ OrderStatusIcon, OrderStatusBadge, backToOrderList, selectedOrder, usuario}) => {
+
     return (
         <div className="p-4">
             <button
@@ -26,9 +27,9 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
             </button>
 
             <div className="flex items-center gap-2 mb-4">
-                <OrderStatusIcon status={selectedOrder.status} />
+                <OrderStatusIcon status={selectedOrder.estado} />
                 <span className="font-medium">
-                    Estado: <OrderStatusBadge status={selectedOrder.status} />
+                    Estado: <OrderStatusBadge status={selectedOrder.estado} />
                 </span>
             </div>
 
@@ -43,21 +44,21 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
                                 Número de pedido:
                             </span>
                             <span className="font-medium">
-                                {selectedOrder.id}
+                                {"ORD-2025-"}{selectedOrder.id}
                             </span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-gray-500">Fecha:</span>
                             <span>
                                 {new Date(
-                                    selectedOrder.date
+                                    selectedOrder.fecha
                                 ).toLocaleDateString("es-CL")}
                             </span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-gray-500">Total:</span>
                             <span className="font-medium">
-                                $ {selectedOrder.total}
+                                $ {selectedOrder.precioFinal}
                             </span>
                         </div>
                         <div className="flex justify-between">
@@ -75,19 +76,19 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
                     </h3>
                     <div className="text-sm">
                         <p className="font-medium">
-                            {userData.name} {userData.lastName}
+                            {usuario.nombre} {usuario.apellido}
                         </p>
                         <p>
-                            {userData.addresses[0].street}{" "}
-                            {userData.addresses[0].number}
+                            {selectedOrder.direccion.tipo}{" "}
+                            {selectedOrder.direccion.numero}
                         </p>
                         <p>
-                            {userData.addresses[0].city},{" "}
-                            {userData.addresses[0].state}{" "}
-                            {userData.addresses[0].zipCode}
+                            {selectedOrder.direccion.ciudad},{" "}
+                            {selectedOrder.direccion.calle}{" "}
+                            {selectedOrder.direccion.codigo_postal}
                         </p>
-                        <p>Chile</p>
-                        <p className="mt-1">{userData.phone}</p>
+                        <p>Peru</p>
+                        <p className="mt-1">{usuario.numero}</p>
                     </div>
                 </div>
             </div>
@@ -95,7 +96,7 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
             <div>
                 <h3 className="text-sm font-medium mb-3">Productos</h3>
                 <div className="border rounded-md overflow-hidden">
-                    {selectedOrder.items.map((item, index) => (
+                    {selectedOrder.detalles.map((item, index) => (
                         <ListaProductos
                             key={item.id}
                             item={item}
@@ -110,7 +111,7 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
                         <div className="flex justify-between">
                             <span className="text-sm">Subtotal:</span>
                             <span>
-                                $ {selectedOrder.total.toLocaleString("es-CL")}
+                                $ {selectedOrder.precioFinal}
                             </span>
                         </div>
                         <div className="flex justify-between">
@@ -120,7 +121,7 @@ export const VerDetalle = ({userData, OrderStatusIcon, OrderStatusBadge, backToO
                         <div className="flex justify-between font-medium pt-2 border-t">
                             <span>Total:</span>
                             <span>
-                                $ {selectedOrder.total.toLocaleString("es-CL")}
+                                $ {selectedOrder.precioFinal}
                             </span>
                         </div>
                     </div>

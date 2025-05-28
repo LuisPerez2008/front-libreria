@@ -1,0 +1,124 @@
+/* .contenedor-inventario {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #0d3b66; 
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0d3b66;
+  margin-bottom: 1rem;
+}
+
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.formulario input {
+  flex: 1 1 180px;
+  padding: 12px;
+  border: 1px solid #0d3b66;
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 45px;
+}
+
+.formulario button,
+.contenedor-inventario > button {
+  background-color: #ffc107 !important;
+  color: #0d3b66 !important;
+  padding: 12px 20px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  font-weight: bold !important;
+  font-size: 1rem !important;
+  height: 45px !important;
+  transition: background-color 0.2s ease;
+}
+
+.formulario button:hover,
+.contenedor-inventario > button:hover {
+  background-color: #e0a800 !important;
+}
+
+button.accion-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1.1rem;
+  color: #0d3b66;
+}
+
+button.accion-btn:hover {
+  opacity: 0.7;
+}
+
+.tabla-inventario {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.tabla-inventario thead {
+  background-color: #0d3b66;
+  color: #fff;
+}
+
+.tabla-inventario th,
+.tabla-inventario td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabla-inventario tr:hover {
+  background-color: transparent;
+}
+
+input[type="text"],
+input[type="number"] {
+  box-sizing: border-box;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #888;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #0d3b66;
+  box-shadow: 0 0 4px rgba(13, 59, 102, 0.4);
+}
+
+.contenedor-inventario input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #0d3b66;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #0d3b66;
+}
+
+button.accion-btn svg {
+  vertical-align: middle;
+  fill: #0d3b66;
+}
+
+.formulario input,
+.formulario button {
+  vertical-align: middle;
+}
+ */

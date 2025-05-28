@@ -12,7 +12,7 @@ export const DetalleLibro = () => {
     return (
         <div className="w-[90%]  lg:w-[70%] mx-auto mt-10">
             <DetalleLibroDatos libro={libro} />
-            <DetalleLibroInfo setActivo={setActivo} activo={activo} />
+            <DetalleLibroInfo setActivo={setActivo} activo={activo} libro={libro} />
         </div>
     );
 };

@@ -1,6 +1,42 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { API_BASE_URL } from "../config/baseURL";
+import { use } from "react";
 
 export const InicioSesion = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const navigate = useNavigate();
+
+    const onSubmit = (data) => {
+
+        console.log(data)
+        axios
+            .get(API_BASE_URL + "/clientes/login", {
+                params: {
+                    correo: data.email,
+                    contra: data.password,
+                },
+            })
+            .then((response) => {
+                console.log("Respuesta del servidor:", response.data);
+                localStorage.setItem("usuario", JSON.stringify(response.data));
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.error("Error al enviar los datos:", error);
+            });
+    };
+
+    if (localStorage.getItem("usuario")) {
+        navigate("/perfil-usuario");
+    }
+
     return (
         <div className="flex flex-col items-center justify-center my-12 w-[90%] md:w-[85%] bg-primary lg:w-[70%] mx-auto">
             <div className="w-full max-w-md space-y-4">
@@ -28,27 +64,53 @@ export const InicioSesion = () => {
                 <div className="space-y-6">
                     <div className="text-center">
                         <h1 className="text-2xl font-medium">Iniciar Sesión</h1>
-                       
                     </div>
 
-                    <form className="space-y-4  w-full ">
+                    <form
+                        className="space-y-4 w-full"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
                         <div>
                             <input
                                 type="email"
                                 placeholder="Correo electrónico"
-                                className="w-full px-4 py-2 border-1 rounded-md"
+                                className="w-full px-4 py-2 border rounded-md"
+                                {...register("email", {
+                                    required: "El correo es obligatorio",
+                                    pattern: {
+                                        value: /^\S+@\S+$/i,
+                                        message: "Correo inválido",
+                                    },
+                                })}
                             />
+                            {errors.email && (
+                                <p className="text-red-600 text-sm mt-1">
+                                    {errors.email.message}
+                                </p>
+                            )}
                         </div>
+
                         <div>
                             <input
                                 type="password"
                                 placeholder="Contraseña"
-                                className="w-full px-4 py-2 border-1 rounded-md"
+                                className="w-full px-4 py-2 border rounded-md"
+                                {...register("password", {
+                                    required: "La contraseña es obligatoria",
+                                    minLength: {
+                                        value: 5,
+                                        message: "Mínimo 5 caracteres",
+                                    },
+                                })}
                             />
+                            {errors.password && (
+                                <p className="text-red-600 text-sm mt-1">
+                                    {errors.password.message}
+                                </p>
+                            )}
                         </div>
-                        <button
-                            className="block w-[70%] mx-auto bg-blue-secondary text-white hover:bg-blue-secondary/70 px-4 py-2 rounded-md cursor-pointer transition-all duration-300"
-                        >
+
+                        <button className="block w-[70%] mx-auto bg-blue-secondary text-white hover:bg-blue-secondary/70 px-4 py-2 rounded-md cursor-pointer transition-all duration-300">
                             INICIAR SESIÓN
                         </button>
                     </form>

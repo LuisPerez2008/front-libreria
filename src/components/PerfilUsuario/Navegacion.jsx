@@ -1,4 +1,5 @@
-export const Navegacion = ({userData, setActiveTab, activeTab, iconos}) => {
+export const Navegacion = ({setActiveTab, activeTab, iconos ,usuario}) => {
+   
     return (
         <div>
             <div className="md:col-span-1">
@@ -7,15 +8,15 @@ export const Navegacion = ({userData, setActiveTab, activeTab, iconos}) => {
                         <div className="h-10 w-10">
                             <img
                                 src={"/logo.png"}
-                                alt={`${userData.name} ${userData.lastName}`}
+                                alt={`${usuario.nombre} ${usuario.apellido}`}
                             />
                         </div>
                         <div>
                             <p className="font-medium">
-                                {userData.name} {userData.lastName}
+                                {usuario.nombre} {usuario.apellido}
                             </p>
                             <p className="text-sm text-gray-500">
-                                {userData.email}
+                                {usuario.correo}
                             </p>
                         </div>
                     </div>

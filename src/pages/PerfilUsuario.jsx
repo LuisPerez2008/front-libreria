@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { Link } from "react-router";
 import { Navegacion } from "../components/PerfilUsuario/Navegacion";
 import { DatosPersonales } from "../components/PerfilUsuario/DatosPersonales";
 import { Pedidos } from "../components/PerfilUsuario/Pedidos";
 import { Direcciones } from "../components/PerfilUsuario/Direcciones";
+import { getUserData } from "../service/userService";
 
 // Datos de ejemplo (sin tipos)
 const mockUserData = {
@@ -67,8 +68,7 @@ const mockUserData = {
                     price: 6590.5,
                     quantity: 1,
                     image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                }
-                 
+                },
             ],
             total: 14581.4,
         },
@@ -122,131 +122,22 @@ const mockUserData = {
 };
 
 
-const usuario = {
-  id: "usr_123456",
-  nombre: "María",
-  apellido: "González",
-  correo: "maria.gonzalez@ejemplo.com",
-  telefono: "+56 9 1234 5678",
-  tipoDocumento: "DNI",
-  numeroDocumento: "12345678-9",
-  fechaNacimiento: "1990-05-15",
-  imagenPerfil: "/placeholder.svg?height=200&width=200",
-  direcciones: [
-    {
-      id: 1,
-      tipo: "Casa",
-      calle: "Av. Providencia",
-      numero: "1234",
-      ciudad: "Santiago",
-      estado: "Región Metropolitana",
-      codigoPostal: "7500000",
-      esPredeterminada: false,
-    },
-    {
-      id: 2,
-      tipo: "Trabajo",
-      calle: "Av. Las Condes",
-      numero: "5678",
-      ciudad: "Santiago",
-      estado: "Región Metropolitana",
-      codigoPostal: "7550000",
-      esPredeterminada: true,
-    },
-    {
-      id: 3,
-      tipo: "Verano",
-      calle: "Av. del Mar",
-      numero: "910",
-      ciudad: "La Serena",
-      estado: "Región de Coquimbo",
-      codigoPostal: "1700000",
-      esPredeterminada: false,
-    },
-  ],
-  pedidos: [
-    {
-      id: "ORD-2023-001",
-      fecha: "2023-05-10",
-      estado: "completado",
-      numeroSeguimiento: null,
-      items: [
-        {
-          id: 1,
-          titulo: "Los juegos del hambre: Amanecer en la cosecha",
-          precio: 7990.9,
-          cantidad: 1,
-          imagen: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-        },
-        {
-          id: 2,
-          titulo: "Cien años de soledad",
-          precio: 6590.5,
-          cantidad: 1,
-          imagen: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-        }
-      ],
-      total: 14581.4,
-    },
-    {
-      id: "ORD-2023-002",
-      fecha: "2023-06-15",
-      estado: "enviado",
-      numeroSeguimiento: "TRACK123456789",
-      items: [
-        {
-          id: 3,
-          titulo: "El señor de los anillos: La comunidad del anillo",
-          precio: 8990,
-          cantidad: 1,
-          imagen: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-        },
-      ],
-      total: 8990,
-    },
-    {
-      id: "ORD-2023-003",
-      fecha: "2023-07-20",
-      estado: "procesando",
-      numeroSeguimiento: null,
-      items: [
-        {
-          id: 4,
-          titulo: "Harry Potter y la piedra filosofal",
-          precio: 6990,
-          cantidad: 1,
-          imagen: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-        },
-      ],
-      total: 6990,
-    },
-    {
-      id: "ORD-2023-004",
-      fecha: "2023-08-05",
-      estado: "cancelado",
-      numeroSeguimiento: null,
-      items: [
-        {
-          id: 5,
-          titulo: "El principito",
-          precio: 5990,
-          cantidad: 1,
-          imagen: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-        },
-      ],
-      total: 5990,
-    },
-  ],
-};
-// Componente para mostrar el estado del pedido
-
-// Componente para mostrar el icono del estado del pedido
-
 
 export const PerfilUsuario = () => {
+    const [usuario, setUsuario] = useState({});
     const [userData, setUserData] = useState(mockUserData);
     const [activeTab, setActiveTab] = useState("perfil");
     const [selectedOrder, setSelectedOrder] = useState(null);
+
+
+    console.log(usuario)
+    useEffect(() => {
+        getUserData().then((usuario) => {
+            if (usuario) {
+                setUsuario(usuario);
+            }
+        });
+    }, []);
 
     // Función para mostrar detalles de un pedido
     const showOrderDetails = (order) => {
@@ -322,24 +213,24 @@ export const PerfilUsuario = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {/* Sidebar de navegación */}
                 <Navegacion
-                    userData={userData}
                     activeTab={activeTab}
                     setActiveTab={setActiveTab}
                     iconos={iconos}
+                    usuario={usuario}
                 />
 
                 {/* Contenido principal */}
                 <div className="md:col-span-3">
                     {activeTab === "perfil" && (
-                        <DatosPersonales userData={userData} />
+                        <DatosPersonales usuario={usuario} />
                     )}
 
                     {activeTab === "pedidos" && (
                         <Pedidos
-                            userData={userData}
                             showOrderDetails={showOrderDetails}
                             backToOrderList={backToOrderList}
                             selectedOrder={selectedOrder}
+                            usuario={usuario}
                         />
                     )}
 

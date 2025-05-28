@@ -1,17 +1,36 @@
-import { useState } from "react";
-const categorias = [
-    "Ficción",
-    "No Ficción",
-    "Ciencia",
-    "Historia",
-    "Biografías",
-    "Tecnología",
-];
-export const Filtro = () => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config/baseURL";
+
+export const Filtro = ({selectedCategorias, setSelectedCategorias, filterLibros}) => {
     const [openCategorias, setOpenCategorias] = useState(false);
     const [openPrecio, setOpenPrecio] = useState(false);
     const [openFiltro, setOpenFiltro] = useState(false);
-    
+    const [categoriasData, setCategoriasData] = useState([]);
+   
+
+    const handleCheckboxChange = (e) => {
+        const nombre = e.target.value;
+        if (e.target.checked) {
+            setSelectedCategorias((prev) => [...prev, nombre]);
+        } else {
+            setSelectedCategorias((prev) =>
+                prev.filter((catId) => catId !== nombre)
+            );
+        }
+    };
+   
+
+    useEffect(() => {
+        axios
+            .get(API_BASE_URL + "/categorias")
+            .then((response) => {
+                setCategoriasData(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching categories:", error);
+            });
+    }, []);
 
     const handleFiltro = () => {
         setOpenCategorias(false);
@@ -104,27 +123,31 @@ export const Filtro = () => {
                         </span>
                     </div>
 
-                    <form
+                    <div
                         className={`flex flex-col  p-4 ${
                             openCategorias
                                 ? "max-h-96 opacity-100"
                                 : "max-h-0 opacity-0"
                         } transition-all duration-300 overflow-hidden`}
                     >
-                        {categorias.map((categoria) => (
+                        {categoriasData.map((categoria) => (
                             <label
-                                key={categoria}
+                                key={categoria.id}
                                 className="flex items-center mb-2 cursor-pointer text-black "
                             >
                                 <input
                                     type="checkbox"
-                                    value={categoria}
-                                    className="mr-2 w-4 h-4 rounded-md accent-yellow-secondary    focus:ring-1 "
+                                    value={categoria.nombre}
+                                    checked={selectedCategorias.includes(
+                                        categoria.nombre
+                                    )}
+                                    onChange={handleCheckboxChange}
+                                    className="mr-2 w-4 h-4 rounded-md accent-yellow-secondary focus:ring-1 "
                                 />
-                                {categoria}
+                                {categoria.nombre}
                             </label>
                         ))}
-                    </form>
+                    </div>
                 </div>
                 <div>
                     <div className="flex items-center justify-between bg-blue-secondary text-white p-2 rounded-tl-lg rounded-tr-lg">
@@ -132,24 +155,22 @@ export const Filtro = () => {
                             className="text-lg font-semibold cursor-pointer "
                             onClick={handlePrecio}
                         >
-                            Precio
+                            precio
                         </h2>
                         <span onClick={handlePrecio} className="cursor-pointer">
                             {!openPrecio ? arrowOpen : arrowClose}
+                            
                         </span>
                     </div>
-                    <form
+                    <div
                         className={`flex flex-col  p-4 ${
                             openPrecio
                                 ? "max-h-96 opacity-100"
                                 : "max-h-0 opacity-0"
                         } transition-all duration-300 overflow-hidden`}
                     >
-                        <div>
-                          
-                          
-                        </div>
-                    </form>
+                        <div>{selectedCategorias}</div>
+                    </div>
                 </div>
                 <div className="flex flex-row justify-between w-full p-4  gap-2">
                     <button
@@ -162,7 +183,9 @@ export const Filtro = () => {
                     >
                         Cerrar
                     </button>
-                    <button className="bg-blue-secondary cursor-pointer text-white py-2 px-4 hover:bg-blue-secondary/85">
+                    <button
+                    onClick={() => filterLibros()} 
+                    className="bg-blue-secondary cursor-pointer text-white py-2 px-4 hover:bg-blue-secondary/85">
                         Aplicar
                     </button>
                 </div>

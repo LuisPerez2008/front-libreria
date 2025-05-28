@@ -62,25 +62,25 @@ function OrderStatusIcon({ status }) {
 }
 function OrderStatusBadge({ status }) {
     switch (status) {
-        case "completed":
+        case "Completado":
             return (
                 <span className="bg-green-300 px-2 py-[2.5px] text-center rounded-full">
                     Completado
                 </span>
             );
-        case "processing":
+        case "Pendiente":
             return (
                 <span className="bg-blue-300 px-2 py-[2.5px] rounded-full">
                     En proceso
                 </span>
             );
-        case "shipped":
+        case "Enviado":
             return (
                 <span className="bg-purple-300 px-2 py-[2.5px] rounded-full">
                     Enviado
                 </span>
             );
-        case "cancelled":
+        case "Canselado":
             return (
                 <span className="bg-red-300 px-2 py-[2.5px]  rounded-full">
                     Cancelado
@@ -96,15 +96,14 @@ export const Pedidos = ({
     selectedOrder,
     showOrderDetails,
     backToOrderList,
+    usuario,
 }) => {
-    console.log("userData", userData);
-
     return (
         <div className="bg-primary rounded-lg shadow-lg shadow-blue-secondary/50 overflow-hidden">
             <div className="p-4 border-b bg-yellow-secondary">
                 <h2 className="font-medium">
                     {selectedOrder
-                        ? `Detalles del pedido #${selectedOrder.id}`
+                        ? `Detalles del pedido #ORD-2025-${selectedOrder.id}`
                         : "Mis pedidos"}
                 </h2>
             </div>
@@ -112,7 +111,7 @@ export const Pedidos = ({
             {!selectedOrder ? (
                 <div className="p-4">
                     <div className="space-y-4">
-                        {userData.orders.length === 0 ? (
+                        {usuario.pedidos.length === 0 ? (
                             <div className="text-center py-8">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -144,15 +143,25 @@ export const Pedidos = ({
                                 </button>
                             </div>
                         ) : (
-                            userData.orders?.map((order) => (
-                                <ListaPedidos key={order.id} order={order} showOrderDetails={showOrderDetails} OrderStatusBadge={OrderStatusBadge}/>
+                            usuario.pedidos?.map((order) => (
+                                <ListaPedidos
+                                    key={order.id}
+                                    order={order}
+                                    showOrderDetails={showOrderDetails}
+                                    OrderStatusBadge={OrderStatusBadge}
+                                />
                             ))
                         )}
                     </div>
                 </div>
             ) : (
-                <VerDetalle userData={userData} selectedOrder={selectedOrder} backToOrderList={backToOrderList} OrderStatusBadge={OrderStatusBadge} OrderStatusIcon={OrderStatusIcon}/>
-                
+                <VerDetalle
+                    selectedOrder={selectedOrder}
+                    backToOrderList={backToOrderList}
+                    OrderStatusBadge={OrderStatusBadge}
+                    OrderStatusIcon={OrderStatusIcon}
+                    usuario={usuario}
+                />
             )}
         </div>
     );
