@@ -1,7 +1,5 @@
 import { Link } from "react-router";
-import { useContext } from "react";
-import { CartContext } from "../contextos/CartContext";
-
+import { toast } from "react-toastify";
 
 export const CardLibro = ({ libro , agregarAlCart}) => {
     const itemLibro = {
@@ -12,6 +10,11 @@ export const CardLibro = ({ libro , agregarAlCart}) => {
         precio: libro.precio,
 
     }
+
+      const handleAgregar = () => {
+    agregarAlCart(itemLibro);
+    toast.success(`"${libro.titulo}" agregado al carrito`);
+  };
 
     return (
         <div className=" space-y-2 rounded-lg h-full min-h-[350px] bg-primary group text-center">
@@ -26,7 +29,7 @@ export const CardLibro = ({ libro , agregarAlCart}) => {
 
                 <div className="absolute   hidden group-hover:block transition-all duration-300 py-1 bottom-0 left-0 w-full bg-primary">
                     <button className=" rounded-md font-bold text-sm py-1 text-blue-secondary bg-yellow-secondary w-[90%] mx-auto cursor-pointer hover:bg-yellow-500 transition-all duration-300 "
-                        onClick={() => agregarAlCart(itemLibro)}>
+                        onClick={handleAgregar}>
                         Añadir al Carrito
                     </button>
                 </div>

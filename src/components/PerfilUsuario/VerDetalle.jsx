@@ -50,9 +50,9 @@ export const VerDetalle = ({ OrderStatusIcon, OrderStatusBadge, backToOrderList,
                         <div className="flex justify-between">
                             <span className="text-gray-500">Fecha:</span>
                             <span>
-                                {new Date(
-                                    selectedOrder.fecha
-                                ).toLocaleDateString("es-CL")}
+                               
+                                   { selectedOrder.fecha}
+                                
                             </span>
                         </div>
                         <div className="flex justify-between">
@@ -78,13 +78,13 @@ export const VerDetalle = ({ OrderStatusIcon, OrderStatusBadge, backToOrderList,
                         <p className="font-medium">
                             {usuario.nombre} {usuario.apellido}
                         </p>
-                        <p>
+                        <p className="font-medium">
                             {selectedOrder.direccion.tipo}{" "}
-                            {selectedOrder.direccion.numero}
+                            
                         </p>
+                        <p>{selectedOrder.direccion.calle},{" "} {selectedOrder.direccion.numero}</p>
                         <p>
                             {selectedOrder.direccion.ciudad},{" "}
-                            {selectedOrder.direccion.calle}{" "}
                             {selectedOrder.direccion.codigo_postal}
                         </p>
                         <p>Peru</p>

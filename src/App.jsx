@@ -13,6 +13,7 @@ import { Layout } from "./layouts/Layout";
 import { RegistroLibros } from "./pages/RegistroLibros";
 import { CartProvider } from "./contextos/CartContext";
 import { Inventario } from "./pages/adminPages/Inventario";
+import { CrudLibro } from "./pages/adminPages/CrudLibro";
 
 function App() {
     return (
@@ -35,7 +36,7 @@ function App() {
                         <Route path="/registro-libro" element={<RegistroLibros/>}/>
                     </Route>
                     <Route path="/inicio-sesion2" element={<InicioSesion />} />
-                    <Route path="/inventario" element={<Inventario />} />
+                    <Route path="/inventario" element={<CrudLibro />} />
                 </Routes>
             </BrowserRouter>
             </CartProvider>

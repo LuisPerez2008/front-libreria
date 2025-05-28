@@ -3,6 +3,9 @@ import { Link } from "react-router";
 import { MenuPerfil } from "./MenuPerfil";
 import { CartContext } from "../contextos/CartContext";
 import { useContext } from "react";
+import { useFetchData } from "../hooks/useFetchData";
+import { CardLibro } from "./CardLibro";
+
 const menuItems = [
     { name: "Inicio", to: "/" },
     { name: "Libros", to: "/categorias" },
@@ -12,8 +15,32 @@ const menuItems = [
 ];
 
 export const Header = () => {
+    const [titulo, setTitulo] = useState("");
+    const [url, setUrl] = useState(null);
 
-    const { totalItems} = useContext(CartContext)
+    // Usamos el hook para hacer fetch cuando url cambia
+    const { data: libros, loading, error } = useFetchData(url);
+
+    useEffect(() => {
+        if (!titulo.trim()) {
+            setUrl(null); // no buscar si está vacío
+            return;
+        }
+
+        // Espera 500ms después del último cambio para hacer la búsqueda
+        const handler = setTimeout(() => {
+            setUrl(
+                `/libros/buscar/titulo?titulo=${encodeURIComponent(titulo)}`
+            );
+        }, 500);
+
+        // Limpia el timeout si título cambia antes de 500ms
+        return () => clearTimeout(handler);
+    }, [titulo]);
+
+    const librosArray = Array.isArray(libros) ? libros : [];
+
+    const { totalItems } = useContext(CartContext);
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
@@ -26,7 +53,6 @@ export const Header = () => {
         if (storedUsuario) {
             setUsuario(JSON.parse(storedUsuario));
         }
-        
     }, []);
 
     const closeMenu = () => setIsOpen(false);
@@ -144,8 +170,13 @@ export const Header = () => {
                                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                             />
                         </svg>
-                        {totalItems  !== 0 ?  <span className="absolute top-1/2 right-0 rounded-full w-4 h-4 p-0.5 bg-yellow-secondary text-sm font-semibold flex justify-center items-center">{totalItems}</span> : "" }
-                       
+                        {totalItems !== 0 ? (
+                            <span className="absolute top-1/2 right-0 rounded-full w-4 h-4 p-0.5 bg-yellow-secondary text-sm font-semibold flex justify-center items-center">
+                                {totalItems}
+                            </span>
+                        ) : (
+                            ""
+                        )}
                     </Link>
                 </article>
                 <article className="buscador flex items-center justify-between px-2 ">
@@ -164,12 +195,14 @@ export const Header = () => {
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                         />
                     </svg>
-                    <div className="flex-grow flex justify-center px-3 md:px-16 py-2 ">
+                    <div className="flex-grow flex justify-center px-3 md:px-16 py-2 relative ">
                         <label className="flex border-1 rounded-lg md:w-full  pl-1 ">
                             <input
                                 type="text"
                                 placeholder="Busca en toda la tienda"
-                                className=" w-full p-2 focus:outline-none "
+                                className="w-full p-2 focus:outline-none"
+                                value={titulo}
+                                onChange={(e) => setTitulo(e.target.value)}
                             />
                             <div className="bg-yellow-secondary h-auto w-10 rounded-br-lg rounded-tr-lg grid place-items-center cursor-pointer">
                                 <svg
@@ -188,6 +221,57 @@ export const Header = () => {
                                 </svg>
                             </div>
                         </label>
+                        {titulo.trim() !== "" && (
+                            <div className="absolute z-50 w-[700px] top-16 bg-primary border-2 rounded-md">
+                                {" "}
+                                {loading && <p>Cargando resultados...</p>}
+                                {error && (
+                                    <p className="text-red-500">
+                                        Error al cargar libros
+                                    </p>
+                                )}
+                                {librosArray.length === 0 &&
+                                    !loading &&
+                                    titulo.trim() !== "" && (
+                                        <p>No se encontraron libros</p>
+                                    )}
+                                <div className="grid grid-cols-2 gap-5 p-2  ">
+                                    {librosArray.map((libro) => (
+                                        <Link
+                                            to={`/libro/${libro.id}`}
+                                            state={{ libro }}
+                                            onClick={() => setTitulo("")} 
+                                        >
+                                            <div  className=" flex gap-2 w-auto p-1 cursor-pointer hover:bg-slate-200 rounded-lg  h-auto bg-primary group text-center">
+                                                <div className="relative h-auto">
+                                                    <img
+                                                        src={
+                                                            libro.img
+                                                                ? `data:image/jpeg;base64,${libro.img}`
+                                                                : "/placeholder.jpg"
+                                                        }
+                                                        alt={libro.titulo}
+                                                        className=" object-cover w-10 mx-auto "
+                                                    />
+                                                </div>
+                                                <div className="flex flex-col justify-center">
+                                                    <h2 className=" text-sm ">
+                                                        {libro.titulo}
+                                                    </h2>
+
+                                                    <p className="text-sm font-bold mt-2 text-blue-secondary ">
+                                                        S/.
+                                                        {libro.precio.toFixed(
+                                                            2
+                                                        )}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </article>
             </section>

@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Navegacion } from "../components/PerfilUsuario/Navegacion";
 import { DatosPersonales } from "../components/PerfilUsuario/DatosPersonales";
@@ -6,132 +6,13 @@ import { Pedidos } from "../components/PerfilUsuario/Pedidos";
 import { Direcciones } from "../components/PerfilUsuario/Direcciones";
 import { getUserData } from "../service/userService";
 
-// Datos de ejemplo (sin tipos)
-const mockUserData = {
-    id: "usr_123456",
-    name: "María",
-    lastName: "González",
-    email: "maria.gonzalez@ejemplo.com",
-    phone: "+56 9 1234 5678",
-    documentType: "DNI",
-    documentNumber: "12345678-9",
-    birthDate: "1990-05-15",
-    profileImage: "/placeholder.svg?height=200&width=200",
-    addresses: [
-        {
-            id: 1,
-            type: "Casa",
-            street: "Av. Providencia",
-            number: "1234",
-            city: "Santiago",
-            state: "Región Metropolitana",
-            zipCode: "7500000",
-            isDefault: false,
-        },
-        {
-            id: 2,
-            type: "Trabajo",
-            street: "Av. Las Condes",
-            number: "5678",
-            city: "Santiago",
-            state: "Región Metropolitana",
-            zipCode: "7550000",
-            isDefault: true,
-        },
-        {
-            id: 3,
-            type: "Verano",
-            street: "Av. del Mar",
-            number: "910",
-            city: "La Serena",
-            state: "Región de Coquimbo",
-            zipCode: "1700000",
-            isDefault: false,
-        },
-    ],
-    orders: [
-        {
-            id: "ORD-2023-001",
-            date: "2023-05-10",
-            status: "completed",
-            items: [
-                {
-                    id: 1,
-                    title: "Los juegos del hambre: Amanecer en la cosecha",
-                    price: 7990.9,
-                    quantity: 1,
-                    image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                },
-                {
-                    id: 2,
-                    title: "Cien años de soledad",
-                    price: 6590.5,
-                    quantity: 1,
-                    image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                },
-            ],
-            total: 14581.4,
-        },
-        {
-            id: "ORD-2023-002",
-            date: "2023-06-15",
-            status: "shipped",
-            trackingNumber: "TRACK123456789",
-            items: [
-                {
-                    id: 3,
-                    title: "El señor de los anillos: La comunidad del anillo",
-                    price: 8990,
-                    quantity: 1,
-                    image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                },
-            ],
-            total: 8990,
-        },
-        {
-            id: "ORD-2023-003",
-            date: "2023-07-20",
-            status: "processing",
-            items: [
-                {
-                    id: 4,
-                    title: "Harry Potter y la piedra filosofal",
-                    price: 6990,
-                    quantity: 1,
-                    image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                },
-            ],
-            total: 6990,
-        },
-        {
-            id: "ORD-2023-004",
-            date: "2023-08-05",
-            status: "cancelled",
-            items: [
-                {
-                    id: 5,
-                    title: "El principito",
-                    price: 5990,
-                    quantity: 1,
-                    image: "https://www.crisol.com.pe/media/catalog/product/cache/597531f9de47f5e5225ef01cbe4bbd93/9/7/9786125156020_pabc3ngajzvlahd3.jpg",
-                },
-            ],
-            total: 5990,
-        },
-    ],
-};
-
-
-
 export const PerfilUsuario = () => {
     const [usuario, setUsuario] = useState({});
-    const [userData, setUserData] = useState(mockUserData);
     const [activeTab, setActiveTab] = useState("perfil");
     const [selectedOrder, setSelectedOrder] = useState(null);
 
-
-    console.log(usuario)
     useEffect(() => {
+        if (!usuario) return;
         getUserData().then((usuario) => {
             if (usuario) {
                 setUsuario(usuario);
@@ -235,7 +116,7 @@ export const PerfilUsuario = () => {
                     )}
 
                     {activeTab === "direcciones" && (
-                        <Direcciones userData={userData} />
+                        <Direcciones usuario={usuario} />
                     )}
                 </div>
             </div>

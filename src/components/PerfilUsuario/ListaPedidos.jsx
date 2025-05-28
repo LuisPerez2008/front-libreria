@@ -1,16 +1,16 @@
-export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
-    console.log(order)
+export const ListaPedidos = ({ order, showOrderDetails, OrderStatusBadge }) => {
     return (
         <div key={order.id} className="border rounded-md overflow-hidden">
             <div className="p-4 bg-yellow-secondary/10 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                 <div>
                     <div className="flex items-center gap-2">
-                        <span className="font-medium">Pedido #ORD-2025-{order.id}</span>
+                        <span className="font-medium">
+                            Pedido #ORD-2025-{order.id}
+                        </span>
                         <OrderStatusBadge status={order.estado} />
                     </div>
                     <p className="text-sm text-gray-500">
-                        Fecha:{" "}
-                        {new Date(order.fecha).toLocaleDateString("es-CL")}
+                        Fecha: {order.fecha}
                     </p>
                 </div>
                 <div className="flex items-center gap-2 ">
@@ -62,14 +62,18 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
             </div>
 
             <div className="p-4 flex flex-col sm:flex-row gap-4">
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap max-w-[40%] ">
                     {order.detalles.map((item) => (
                         <div
                             key={item.id}
-                            className="w-12 h-16 bg-gray-100 rounded-md overflow-hidden"
+                            className="w-12 h-16 bg-gray-100 rounded-md overflow-hidden "
                         >
                             <img
-                                src={item.libro?.img ? `data:image/jpeg;base64,${item.libro.img}` : "/placeholder.jpg"}
+                                src={
+                                    item.libro?.img
+                                        ? `data:image/jpeg;base64,${item.libro.img}`
+                                        : "/placeholder.jpg"
+                                }
                                 alt={item.libro.titulo}
                                 width={48}
                                 height={64}
@@ -78,7 +82,7 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
                         </div>
                     ))}
                 </div>
-                <div className="flex-1 flex flex-col sm:flex-row justify-between sm:items-center">
+                <div className="flex-1 flex flex-col sm:flex-row justify-between sm:items-center ">
                     <div>
                         <p className="text-sm">
                             {order.detalles?.length}{" "}
@@ -87,10 +91,12 @@ export const ListaPedidos = ({order, showOrderDetails, OrderStatusBadge}) => {
                                 : "productos"}
                         </p>
                         <p className="text-xs text-gray-500">
-                            {order.detalles?.map((item) => item.libro.titulo).join(", ")}
+                            {order.detalles
+                                ?.map((item) => item.libro.titulo)
+                                .join(", ")}
                         </p>
                     </div>
-                    <div className="text-right mt-2 sm:mt-0">
+                    <div className="text-right mt-2 sm:mt-0 min-w-[70px] ">
                         <p className="text-sm text-gray-500">Total</p>
                         <p className="font-bold">$ {order.precioFinal}</p>
                     </div>

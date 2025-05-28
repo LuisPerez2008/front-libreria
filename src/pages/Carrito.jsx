@@ -4,6 +4,7 @@ import { CartContext } from "../contextos/CartContext";
 import { useFetchData } from "../hooks/useFetchData";
 import { API_BASE_URL } from "../config/baseURL";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const Carrito = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export const Carrito = () => {
 
    const crearPedido = () => {
     const fecha = new Date().toISOString().split("T")[0];
-
+    console.log(fecha)
     const pedidoData = {
         cliente: { id: usuario.id },
         direccion: { id: selectedId },
@@ -51,7 +52,6 @@ export const Carrito = () => {
             const pedidoCreado = res.data;
             console.log("Pedido creado:", pedidoCreado);
 
-            // Ahora creamos los detalles
             const detallesPromises = cartItems.map((item) => {
                 const detalleData = {
                     libro: { id: item.id },
@@ -75,8 +75,10 @@ export const Carrito = () => {
             console.error("Error en pedido o detalles:", err.response?.data || err.message);
         });
 
+        toast.success("La compra fue exitosa");
         vaciarCart();
         setIsOpen(false);
+        
 };
 
     const updateQuantity = (id, newQuantity) => {

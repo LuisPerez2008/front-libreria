@@ -1,9 +1,9 @@
 import {useState, useContext } from "react";
 import { CartContext } from "../contextos/CartContext";
+import { toast } from "react-toastify";
 
 export const DetalleLibroDatos = ({ libro }) => {
     const {agregarAlCart, cartItems} = useContext(CartContext)
-    console.log(cartItems)
     const [cantidad, setCantidad] = useState(1);
     const itemLibro = {
         id: libro.id,
@@ -15,6 +15,7 @@ export const DetalleLibroDatos = ({ libro }) => {
 
     const handleAgregar = () =>{
         agregarAlCart({...itemLibro, quantity: cantidad});
+        toast.success(`Agregado al carrito: ${libro.titulo}`);
     }
     return (
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 w-[100%] lg:w-[80%] mx-auto md:mx-0 ">
@@ -35,11 +36,11 @@ export const DetalleLibroDatos = ({ libro }) => {
                     {libro.titulo}
                 </h1>
 
-                <span className=" mb-6 block">Mikecrack</span>
+                <span className=" mb-6 block">{libro.autor}</span>
                 <hr className="mb-6 border-gray-500" />
                 <div className="flex items-baseline gap-2 mb-6">
                     <span className="text-2xl font-bold">
-                        S/ {libro.precio}
+                        S/ {libro.precio.toFixed(2)}
                     </span>
                 </div>
 

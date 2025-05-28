@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { API_BASE_URL } from "../config/baseURL";
-import { use } from "react";
+import { toast } from "react-toastify";
 
 export const InicioSesion = () => {
     const {
@@ -29,6 +29,7 @@ export const InicioSesion = () => {
                 window.location.reload();
             })
             .catch((error) => {
+                toast.error("Credenciales incorrectas");
                 console.error("Error al enviar los datos:", error);
             });
     };
